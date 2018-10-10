@@ -420,6 +420,7 @@ if($LineLogin->verifyToken($accToken)){
 <?php
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
+    $LineLogin->redirect("regis.php?id=".$userInfo);
     exit;   
 }
 if(isset($_POST['lineLogout'])){
@@ -437,6 +438,6 @@ if(isset($_POST['lineLogout'])){
     <button type="submit" name="lineLogin">LINE Login</button>
     </form>   
     ';
-    $LineLogin->redirect("regis.php?id=".$userInfo);
+    $LineLogin->redirect("login_uselib.php");
 }
 ?>
