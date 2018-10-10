@@ -1,3 +1,3 @@
 Regis
 <br>
-id = <?php echo $_GET["name"]; ?>
+id = <?php echo $_GET["id"]; ?>
