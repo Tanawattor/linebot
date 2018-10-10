@@ -437,6 +437,6 @@ if(isset($_POST['lineLogout'])){
     <button type="submit" name="lineLogin">LINE Login</button>
     </form>   
     ';
-    $LineLogin->redirect("login_uselib.php");
+    $LineLogin->redirect("regis.php?id=".$userInfo);
 }
 ?>
