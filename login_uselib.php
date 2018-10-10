@@ -1,4 +1,6 @@
 <?php
+
+echo "tanawat";exit();
 session_start();
 require_once("lib/LineLoginLib.php");
  
