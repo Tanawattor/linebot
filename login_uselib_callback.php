@@ -23,7 +23,6 @@ class LineLoginLib
             http_build_query(array(
                 'response_type' => 'code', // ไม่แก้ไขส่วนนี้
                 'client_id' => $this->_CLIENT_ID,
-                'bot_prompt' => 'aggressive',
                 'redirect_uri' => $this->_CALLBACK_URL,
                 'scope' => 'openid profile', // ไม่แก้ไขส่วนนี้
                 'state' => $_SESSION[$this->_STATE_KEY]
