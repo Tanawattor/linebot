@@ -342,7 +342,7 @@ if($LineLogin->verifyToken($accToken)){
     echo $accToken."<br><hr>";
     echo "Token Status OK <br>";  
     $userID = $LineLogin->userProfile($accToken);
-    $LineLogin->redirect("regis.php?id=".$userID);
+    //$LineLogin->redirect("regis.php?id=".$userID);
 }
  
  
