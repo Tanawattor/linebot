@@ -467,8 +467,6 @@ if($LineLogin->verifyToken($accToken)){
 <?php } ?>
 <?php
 if(isset($_POST['register'])){
-    echo "string";
-    exit;
     //$LineLogin->authorize(); 
     # An HTTP POST request example
 
@@ -498,10 +496,18 @@ if(isset($_POST['register'])){
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
     //execute post
-    $result = curl_exec($ch);
+    
+    // Send the request and check the response
+      if (($result = curl_exec($ch)) === FALSE) {
+        die('cURL error: '.curl_error($ch)."<br />\n");
+      } else {
+        echo "Success!<br />\n";
+        $result = curl_exec($ch);
+      }
+      //close connection
+      curl_close($ch);
+    
 
-    //close connection
-    curl_close($ch);
 
     echo $result;
     exit;   
