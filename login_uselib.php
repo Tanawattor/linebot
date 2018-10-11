@@ -479,38 +479,56 @@ if(isset($_POST['register'])){
     $userid = $_POST['userid'];
     $cid = $_POST['cid'];
     $key = "xxx";
-    # data needs to be POSTed to the Play url as JSON.
-    # (some code from http://www.lornajane.net/posts/2011/posting-json-data-with-php-curl)
-    $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
-    $data_string = json_encode($data);
-    $registerURL = "http://203.157.162.18/link_line/register.php";
+
     $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, $registerURL);
-    //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+
+    curl_setopt($ch, CURLOPT_URL,"http://203.157.162.18/link_line/register.php");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                "postvar1=value1&postvar2=value2&postvar3=value3");
+
+    // In real life you should use something like:
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, 
+    //          http_build_query(array('postvar1' => 'value1')));
+
+    // Receive server response ...
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-        'Content-Length: ' . strlen($data_string))
-    );
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 
-    //execute post
+    $server_output = curl_exec($ch);
+
+    curl_close ($ch);
+
+    // Further processing ...
+    if ($server_output == "OK") { ... } else { ... }
+
+
+    // $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
+    // $data_string = json_encode($data);
+    // $registerURL = "http://203.157.162.18/link_line/register.php";
+    // $ch = curl_init();
+    // curl_setopt( $ch, CURLOPT_URL, $registerURL);
+    // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    //     'Content-Type: application/json',
+    //     'Content-Length: ' . strlen($data_string))
+    // );
+    // curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+
+    //   if (($result = curl_exec($ch)) === FALSE) {
+    //     die('cURL error: '.curl_error($ch)."<br />\n");
+    //   } else {
+    //     echo "Success!<br />\n";
+    //     $result = curl_exec($ch);
+    //   }
+
+    //   curl_close($ch);
     
-    // Send the request and check the response
-      if (($result = curl_exec($ch)) === FALSE) {
-        die('cURL error: '.curl_error($ch)."<br />\n");
-      } else {
-        echo "Success!<br />\n";
-        $result = curl_exec($ch);
-      }
-      //close connection
-      curl_close($ch);
-    
 
 
-    echo $result;
+    // echo $result;
     exit;   
 }
 if(isset($_POST['lineLogin'])){
