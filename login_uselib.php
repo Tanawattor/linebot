@@ -492,8 +492,8 @@ if(isset($_POST['register'])){
         'Content-Type: application/json',
         'Content-Length: ' . strlen($data_string))
     );
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 
     //execute post
     
