@@ -441,9 +441,11 @@ if($LineLogin->verifyToken($accToken)){
       <form action="#" method="post">
       <div class="form-group">
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
-          <input type="number" style="text-align:center" class="form-control" name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
+          <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
+          <input type="number" style="text-align:center" class="form-control" id="cid"name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
           <br><br>
           <button type="submit"
+           onclick="Login();"
            style="background-color:#00C300;color:#FFFFFF"
            class="btn btn-block"
            name="register">ยืนยัน</button>
@@ -453,6 +455,34 @@ if($LineLogin->verifyToken($accToken)){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
   </body>
+  <script>
+                function Login(){
+                    var userid = $("#userid").val();
+                    var cid = $("#cid").val();
+                    //var key = $("#key_tf").val();
+                    var key = "xxx";
+                    if(userid !="" && cid != ""){
+                        $.ajax({
+                            type: "POST",
+                            url: "http://203.157.162.18/link_line/register.php",
+                            data: "userid="+userid+"&cid="+cid+"&key="+key,
+                            cache: false,
+                            success: function(data){
+                                if(data=="TRUE"){
+                                    //window.location.href = "index.php";
+                                    alert("OK");
+                                }else{
+                                    alert("Username หรือ Password ไม่ถูกต้อง");
+                                }
+                            }
+                       });
+                    }else{
+                        //alert("กรุณากรอกข้อมูล Username และ Passoword ให้ครบถ้วน");
+                    }
+                }
+                
+                
+    </script>
 </html>
 
 <?php }else{ ?>
@@ -461,10 +491,10 @@ if($LineLogin->verifyToken($accToken)){
 </form>   
 <?php } ?>
 <?php
-if(isset($_POST['register'])){
-    //$LineLogin->authorize(); 
-    exit;   
-}
+// if(isset($_POST['register'])){
+//     //$LineLogin->authorize(); 
+//     exit;   
+// }
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
     exit;   
