@@ -341,7 +341,7 @@ $accToken = $_SESSION['ses_login_accToken_val'];
 if($LineLogin->verifyToken($accToken)){
     echo $accToken."<br><hr>";
     echo "Token Status OK <br>";  
-    $userID = $LineLogin->userProfile($accToken);
+    //$userID = $LineLogin->userProfile($accToken);
     //$LineLogin->redirect("regis.php?id=".$userID);
 }
  
