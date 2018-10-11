@@ -366,14 +366,19 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
     <![endif]-->
   </head>
   <body style="font-size:14px">
-    <div class="container" align="center">          
+    <div class="container" align="center">
+      <br>          
 	  <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="100" height="100"> 
 	  <br><br>
-	  <h3><?php echo $lineUserData['name']; ?></h3>
-	  <br><br>
+	  <h5><?php echo $lineUserData['name']; ?></h5>
+	  <br>
 	  <div class="form-group">
-		  <label for="usr">เลขบัตรประชาชน:</label>
-		  <input type="number" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
+		  <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
+		  <input type="number" style="text-align: right" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
+		  <br>
+		  <button type="button"
+		   style="color:#00C300"
+		   class="btn">ยืนยัน</button>
 	  </div>
 	</div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
