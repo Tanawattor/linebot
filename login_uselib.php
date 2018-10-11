@@ -483,7 +483,7 @@ if($LineLogin->verifyToken($accToken)){
            class="btn btn-block"
            name="register">ยืนยัน</button>
            <?php }elseif ($chkRegis == 1) { ?>
-            <h5>line คุณได้ลงทะเบียนกับเราเรียบร้อยแล้ว !!</h5>
+            <h5>line คุณได้ลงทะเบียนกับเราแล้ว !!</h5>
 
            <?php }else{ ?>
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
