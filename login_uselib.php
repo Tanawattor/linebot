@@ -472,7 +472,6 @@ if($LineLogin->verifyToken($accToken)){
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
           <?php 
             $chkRegis = $LineLogin->getRegister($lineUserData['sub']);
-            echo $chkRegis;
             if($chkRegis == 0){
             ?>
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
@@ -484,7 +483,7 @@ if($LineLogin->verifyToken($accToken)){
            class="btn btn-block"
            name="register">ยืนยัน</button>
            <?php }elseif ($chkRegis == 1) { ?>
-            <h5>คุณได้ลงทะเบียนเรียบร้อยแล้ว !!</h5>
+            <h5>line คุณได้ลงทะเบียนกับเราเรียบร้อยแล้ว !!</h5>
 
            <?php }else{ ?>
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
