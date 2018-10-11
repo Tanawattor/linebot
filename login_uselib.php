@@ -460,6 +460,8 @@ if($LineLogin->verifyToken($accToken)){
                 function Login(){
                     var userid = $("#userid").val();
                     var cid = $("#cid").val();
+                    consloe.log(userid);
+                    consloe.log(cid);
                     //var key = $("#key_tf").val();
                     var key = "xxx";
                     if(userid !="" && cid != ""){
