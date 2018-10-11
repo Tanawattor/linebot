@@ -482,7 +482,8 @@ if(isset($_POST['register'])){
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"http://203.157.162.18/link_line/register.php");
+    //curl_setopt($ch, CURLOPT_URL,"http://203.157.162.18/link_line/register.php");
+    curl_setopt($ch, CURLOPT_URL,"http://resume-online.mono.co.th/restmonotravel/welcome/test");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
                 "postvar1=value1&postvar2=value2&postvar3=value3");
