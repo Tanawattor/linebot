@@ -447,13 +447,13 @@ if($LineLogin->verifyToken($accToken)){
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
           <input type="number" style="text-align:center" class="form-control" id="cid"name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
           <br><br>
-          <button
+      </div>
+      </form>
+      <button
            onclick="Login();"
            style="background-color:#00C300;color:#FFFFFF"
            class="btn btn-block"
            name="register">ยืนยัน</button>
-      </div>
-      </form>
     </div>
     
   </body>
