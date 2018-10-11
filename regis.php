@@ -353,7 +353,9 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 
 <div class="container" align="center">          
   <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="300" height="300"> 
-  <h2><?php echo $lineUserData['name']; ?></h2>
+  <br>
+  <h1><?php echo $lineUserData['name']; ?></h1>
+  <input type="text" class="form-control form-control-lg" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
 </div>
 
 
