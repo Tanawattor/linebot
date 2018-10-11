@@ -372,14 +372,16 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 	  <br><br>
 	  <h5><?php echo $lineUserData['name']; ?></h5>
 	  <br>
+	  <form action="#" method="post">
 	  <div class="form-group">
 		  <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
-		  <input type="number" style="text-align: right" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
-		  <br>
+		  <input type="number" style="text-align:center" class="form-control" name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
+		  <br><br>
 		  <button type="button"
-		   style="color:#00C300"
+		   style="background-color:#00C300;color:#FFFFFF"
 		   class="btn">ยืนยัน</button>
 	  </div>
+	  </form>
 	</div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
