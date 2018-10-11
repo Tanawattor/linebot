@@ -483,9 +483,10 @@ if(isset($_POST['register'])){
     # (some code from http://www.lornajane.net/posts/2011/posting-json-data-with-php-curl)
     $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
     $data_string = json_encode($data);
-
-    $ch = curl_init('http://203.157.162.18/link_line/register.php');
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    $registerURL = "http://203.157.162.18/link_line/register.php";
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $registerURL);
+    //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
