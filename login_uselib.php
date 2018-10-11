@@ -483,57 +483,36 @@ if(isset($_POST['register'])){
     $ch = curl_init();
 
     //curl_setopt($ch, CURLOPT_URL,"http://203.157.162.18/link_line/register.php");
-    curl_setopt($ch, CURLOPT_URL,"http://resume-online.mono.co.th/restmonotravel/welcome/test");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                "postvar1=value1&postvar2=value2&postvar3=value3");
+    //curl_setopt($ch, CURLOPT_URL,"http://resume-online.mono.co.th/restmonotravel/welcome/test");
 
-    // In real life you should use something like:
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, 
-    //          http_build_query(array('postvar1' => 'value1')));
 
-    // Receive server response ...
+    $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
+    $data_string = json_encode($data);
+    $registerURL = "http://resume-online.mono.co.th/restmonotravel/welcome/test";
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $registerURL);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data_string))
+    );
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 
-    $server_output = curl_exec($ch);
-
-    curl_close ($ch);
-
-    // Further processing ...
-    if ($server_output == "OK") { 
-        echo $server_output;
-    } else { 
+      if (($result = curl_exec($ch)) === FALSE) {
         die('cURL error: '.curl_error($ch)."<br />\n");
-    }
+      } else {
+        echo "Success!<br />\n";
+        $result = curl_exec($ch);
+      }
 
-
-    // $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
-    // $data_string = json_encode($data);
-    // $registerURL = "http://203.157.162.18/link_line/register.php";
-    // $ch = curl_init();
-    // curl_setopt( $ch, CURLOPT_URL, $registerURL);
-    // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    //     'Content-Type: application/json',
-    //     'Content-Length: ' . strlen($data_string))
-    // );
-    // curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-
-    //   if (($result = curl_exec($ch)) === FALSE) {
-    //     die('cURL error: '.curl_error($ch)."<br />\n");
-    //   } else {
-    //     echo "Success!<br />\n";
-    //     $result = curl_exec($ch);
-    //   }
-
-    //   curl_close($ch);
+      curl_close($ch);
     
 
 
-    // echo $result;
+    echo $result;
     exit;   
 }
 if(isset($_POST['lineLogin'])){
