@@ -377,9 +377,9 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 		  <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
 		  <input type="number" style="text-align:center" class="form-control" name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
 		  <br><br>
-		  <button type="button"
+		  <button type="submit"
 		   style="background-color:#00C300;color:#FFFFFF"
-		   class="btn">ยืนยัน</button>
+		   class="btn btn-block">ยืนยัน</button>
 	  </div>
 	  </form>
 	</div>
