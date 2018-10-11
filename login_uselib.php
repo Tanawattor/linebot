@@ -526,16 +526,17 @@ if(isset($_POST['register'])){
       if (($result = curl_exec($ch)) === FALSE) {
         die('cURL error: '.curl_error($ch)."<br />\n");
       } else {
-        echo "Success!<br />\n";
+        //echo "Success!<br />\n";
         $result = curl_exec($ch);
+        $LineLogin->redirect("login_uselib.php");
       }
 
       curl_close($ch);
     
 
 
-    echo $result;
-    exit;   
+    // echo $result;
+    // exit;   
 }
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
