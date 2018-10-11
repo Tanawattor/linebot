@@ -499,7 +499,11 @@ if(isset($_POST['register'])){
     curl_close ($ch);
 
     // Further processing ...
-    if ($server_output == "OK") { ... } else { ... }
+    if ($server_output == "OK") { 
+        echo $server_output;
+    } else { 
+        die('cURL error: '.curl_error($ch)."<br />\n");
+    }
 
 
     // $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
