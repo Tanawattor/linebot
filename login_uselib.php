@@ -440,7 +440,7 @@ if($LineLogin->verifyToken($accToken)){
       <br><br>
       <h5><?php echo $lineUserData['name']; ?></h5>
       <br>
-      <form>
+      <form method="POST" name="register">
       <div class="form-group">
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
