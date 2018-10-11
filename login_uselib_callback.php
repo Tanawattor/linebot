@@ -349,5 +349,5 @@ if(!is_null($dataToken) && is_array($dataToken)){
         $_SESSION['ses_login_userData_val'] = $dataToken['user'];
     }       
 }
-$LineLogin->redirect('regis.php');
+$LineLogin->redirect('login_uselib.php');
 ?>
