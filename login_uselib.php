@@ -304,6 +304,33 @@ class LineLoginLib
             return bin2hex(openssl_random_pseudo_bytes($length));
         }
     }
+
+    public function getRegister($userid)
+    {
+        $data = array("userid" => "$userid");
+        $data_string = json_encode($data);
+        $registerURL = "http://178.128.111.230/link_line/chkregister.php";
+        $ch = curl_init();
+        curl_setopt( $ch, CURLOPT_URL, $registerURL);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data_string))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        $result = curl_exec( $ch );
+        $httpCode = curl_getinfo( $ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        $result = json_decode($result,TRUE);
+        if($httpCode == 200){
+            return $result;                
+        }else{
+            return "500";                        
+        }
+    }
      
 }
 ?>
@@ -443,6 +470,10 @@ if($LineLogin->verifyToken($accToken)){
       <form method="POST" name="register" action="login_uselib.php">
       <div class="form-group">
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
+          <?php 
+            $chkRegis = $LineLogin->getRegister($lineUserData['sub']);
+            if($chkRegis == 0){
+            ?>
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
           <input type="number" style="text-align:center" class="form-control" id="cid"name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
           <br><br>
@@ -451,6 +482,12 @@ if($LineLogin->verifyToken($accToken)){
            style="background-color:#00C300;color:#FFFFFF"
            class="btn btn-block"
            name="register">ยืนยัน</button>
+           <?php }elseif ($chkRegis == 1) { ?>
+            <h5>คุณได้ลงทะเบียนเรียบร้อยแล้ว !!</h5>
+
+           <?php }else{ ?>
+                เกิดข้อผิดพลาดกรุณาลองใหม่ !
+           <?php } ?>
       </div>
       </form>
       
