@@ -425,10 +425,6 @@ if($LineLogin->verifyToken($accToken)){
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
-    <script
-      src="https://code.jquery.com/jquery-2.2.4.min.js"
-      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-      crossorigin="anonymous"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -450,46 +446,18 @@ if($LineLogin->verifyToken($accToken)){
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
           <input type="number" style="text-align:center" class="form-control" id="cid"name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
           <br><br>
-      </div>
-      </form>
-      <button
-           onclick="Login();"
+          <button
+           type="submit"
            style="background-color:#00C300;color:#FFFFFF"
            class="btn btn-block"
            name="register">ยืนยัน</button>
+      </div>
+      </form>
+      
     </div>
     
   </body>
-  <script>
-                function Login(){
-                    var userid = $("#userid").val();
-                    var cid = $("#cid").val();
-                    consloe.log(userid);
-                    consloe.log(cid);
-                    //var key = $("#key_tf").val();
-                    var key = "xxx";
-                    if(userid !="" && cid != ""){
-                        $.ajax({
-                            type: "POST",
-                            url: "http://203.157.162.18/link_line/register.php",
-                            data: "userid="+userid+"&cid="+cid+"&key="+key,
-                            cache: false,
-                            success: function(data){
-                                if(data=="TRUE"){
-                                    //window.location.href = "index.php";
-                                    alert("OK");
-                                }else{
-                                    alert("Username หรือ Password ไม่ถูกต้อง");
-                                }
-                            }
-                       });
-                    }else{
-                        //alert("กรุณากรอกข้อมูล Username และ Passoword ให้ครบถ้วน");
-                    }
-                }
-                
-                
-    </script>
+
 </html>
 
 <?php }else{ ?>
@@ -498,10 +466,44 @@ if($LineLogin->verifyToken($accToken)){
 </form>   
 <?php } ?>
 <?php
-// if(isset($_POST['register'])){
-//     //$LineLogin->authorize(); 
-//     exit;   
-// }
+if(isset($_POST['register'])){
+    //$LineLogin->authorize(); 
+    # An HTTP POST request example
+
+    # a pass-thru script to call my Play server-side code.
+    # currently needed in my dev environment because Apache and Play run on
+    # different ports. (i need to do something like a reverse-proxy from
+    # Apache to Play.)
+
+    # the POST data we receive from Sencha (which is not JSON)
+    $userid = $_POST['userid'];
+    $cid = $_POST['cid'];
+    $key = "xxx";
+    # data needs to be POSTed to the Play url as JSON.
+    # (some code from http://www.lornajane.net/posts/2011/posting-json-data-with-php-curl)
+    $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
+    $data_string = json_encode($data);
+
+    $ch = curl_init('http://203.157.162.18/link_line/register.php');
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data_string))
+    );
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+
+    //execute post
+    $result = curl_exec($ch);
+
+    //close connection
+    curl_close($ch);
+
+    echo $result;
+    exit;   
+}
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
     exit;   
