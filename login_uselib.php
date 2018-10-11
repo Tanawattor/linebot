@@ -440,7 +440,7 @@ if($LineLogin->verifyToken($accToken)){
       <br><br>
       <h5><?php echo $lineUserData['name']; ?></h5>
       <br>
-      <form method="POST" name="register" action="#">
+      <form method="POST" name="register" action="login_uselib.php">
       <div class="form-group">
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
@@ -467,6 +467,8 @@ if($LineLogin->verifyToken($accToken)){
 <?php } ?>
 <?php
 if(isset($_POST['register'])){
+    echo "string";
+    exit;
     //$LineLogin->authorize(); 
     # An HTTP POST request example
 
