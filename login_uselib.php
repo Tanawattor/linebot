@@ -339,54 +339,52 @@ if(!isset($_SESSION['ses_login_accToken_val'])){
 $accToken = $_SESSION['ses_login_accToken_val'];
 // Status Token Check
 if($LineLogin->verifyToken($accToken)){
-    echo $accToken."<br><hr>";
-    echo "Token Status OK <br>";  
-    //$userID = $LineLogin->userProfile($accToken);
-    //$LineLogin->redirect("regis.php?id=".$userID);
+    // echo $accToken."<br><hr>";
+    // echo "Token Status OK <br>";  
 }
  
  
-echo "<pre>";
+//echo "<pre>";
 // Status Token Check with Result 
 //$statusToken = $LineLogin->verifyToken($accToken, true);
 //print_r($statusToken);
  
  
 //////////////////////////
-echo "<hr>";
+//echo "<hr>";
 // GET LINE USERID FROM USER PROFILE
 //$userID = $LineLogin->userProfile($accToken);
 //echo $userID;
  
 //////////////////////////
-echo "<hr>";
+//echo "<hr>";
 // GET LINE USER PROFILE 
 $userInfo = $LineLogin->userProfile($accToken,true);
 if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
-    print_r($userInfo);
+    //print_r($userInfo);
 }
  
 //exit;
-echo "<hr>";
+//echo "<hr>";
  
 if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
     // GET USER DATA FROM ID TOKEN
     $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
-    print_r($lineUserData); 
-    echo "<hr>";
-    echo "Line UserID: ".$lineUserData['sub']."<br>";
-    echo "Line Display Name: ".$lineUserData['name']."<br>";
-    echo '<img style="width:100px;" src="'.$lineUserData['picture'].'" /><br>';
+    // print_r($lineUserData); 
+    // echo "<hr>";
+    // echo "Line UserID: ".$lineUserData['sub']."<br>";
+    // echo "Line Display Name: ".$lineUserData['name']."<br>";
+    // echo '<img style="width:100px;" src="'.$lineUserData['picture'].'" /><br>';
 }
  
  
-echo "<hr>";
+//echo "<hr>";
 if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refreshToken_val']!=""){
-    echo '
-    <form method="post">
-    <button type="submit" name="refreshToken">Refresh Access Token</button>
-    </form>   
-    ';  
+    // echo '
+    // <form method="post">
+    // <button type="submit" name="refreshToken">Refresh Access Token</button>
+    // </form>   
+    // ';  
 }
 if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refreshToken_val']!=""){
     if(isset($_POST['refreshToken'])){
@@ -408,18 +406,65 @@ if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refres
 //print_r($statusRevoke);
 ?>
 <?php
-echo "<hr>";
+//echo "<hr>";
 if($LineLogin->verifyToken($accToken)){
 ?>
-<form method="post">
+<!-- <form method="post">
 <button type="submit" name="lineLogout">LINE Logout</button>
-</form>
+</form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="font-size:14px">
+    <div class="container" align="center">
+      <br>          
+      <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="100" height="100"> 
+      <br><br>
+      <h5><?php echo $lineUserData['name']; ?></h5>
+      <br>
+      <form action="#" method="post">
+      <div class="form-group">
+          <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
+          <input type="number" style="text-align:center" class="form-control" name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
+          <br><br>
+          <button type="submit"
+           style="background-color:#00C300;color:#FFFFFF"
+           class="btn btn-block"
+           name="register">ยืนยัน</button>
+      </div>
+      </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
 <?php }else{ ?>
 <form method="post">
 <button type="submit" name="lineLogin">LINE Login</button>
 </form>   
 <?php } ?>
 <?php
+if(isset($_POST['register'])){
+    //$LineLogin->authorize(); 
+    exit;   
+}
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
     exit;   
