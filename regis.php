@@ -367,9 +367,9 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
   </head>
   <body style="font-size:14px">
     <div class="container" align="center">          
-	  <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="300" height="300"> 
+	  <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="100" height="100"> 
 	  <br><br>
-	  <h1><?php echo $lineUserData['name']; ?></h1>
+	  <h3><?php echo $lineUserData['name']; ?></h3>
 	  <br><br>
 	  <div class="form-group">
 		  <label for="usr">เลขบัตรประชาชน:</label>
