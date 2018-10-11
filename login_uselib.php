@@ -472,6 +472,7 @@ if($LineLogin->verifyToken($accToken)){
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
           <?php 
             $chkRegis = $LineLogin->getRegister($lineUserData['sub']);
+            echo $chkRegis;
             if($chkRegis == 0){
             ?>
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
