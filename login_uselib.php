@@ -485,7 +485,7 @@ if(isset($_POST['register'])){
     $data_string = json_encode($data);
 
     $ch = curl_init('http://203.157.162.18/link_line/register.php');
-    //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
