@@ -338,11 +338,11 @@ if(!isset($_SESSION['ses_login_accToken_val'])){
 if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
     // GET USER DATA FROM ID TOKEN
     $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
-    print_r($lineUserData); 
-    echo "<hr>";
-    echo "Line UserID: ".$lineUserData['sub']."<br>";
-    echo "Line Display Name: ".$lineUserData['name']."<br>";
-    echo '<img style="width:100px;" src="'.$lineUserData['picture'].'" /><br>';
+    // print_r($lineUserData); 
+    // echo "<hr>";
+    // echo "Line UserID: ".$lineUserData['sub']."<br>";
+    // echo "Line Display Name: ".$lineUserData['name']."<br>";
+    // echo '<img style="width:100px;" src="'.$lineUserData['picture'].'" /><br>';
 }
 
 ?>
@@ -353,9 +353,13 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 
 <div class="container" align="center">          
   <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="300" height="300"> 
-  <br>
+  <br><br>
   <h1><?php echo $lineUserData['name']; ?></h1>
-  <input type="text" class="form-control form-control-lg" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
+  <br><br>
+  <div class="form-group">
+	  <label for="usr">เลขบัตรประชาชน:</label>
+	  <input type="number" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
+  </div>
 </div>
 
 
