@@ -347,20 +347,39 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 
 ?>
 
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
 
-<div class="container" align="center">          
-  <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="300" height="300"> 
-  <br><br>
-  <h1><?php echo $lineUserData['name']; ?></h1>
-  <br><br>
-  <div class="form-group">
-	  <label for="usr">เลขบัตรประชาชน:</label>
-	  <input type="number" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
-  </div>
-</div>
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="font-size:14px">
+    <div class="container" align="center">          
+	  <img src="<?php echo $lineUserData['picture']; ?>" class="rounded-circle" alt="Cinque Terre" width="300" height="300"> 
+	  <br><br>
+	  <h1><?php echo $lineUserData['name']; ?></h1>
+	  <br><br>
+	  <div class="form-group">
+		  <label for="usr">เลขบัตรประชาชน:</label>
+		  <input type="number" class="form-control" id="usr" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )">
+	  </div>
+	</div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+  </body>
+</html>
 
 
 
