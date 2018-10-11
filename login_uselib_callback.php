@@ -349,6 +349,7 @@ if(!is_null($dataToken) && is_array($dataToken)){
         $_SESSION['ses_login_userData_val'] = $dataToken['user'];
     }       
 }
+$accToken = $_SESSION['ses_login_accToken_val'];
 $userID = $LineLogin->userProfile($accToken);
 echo $userID;
 //$LineLogin->redirect('login_uselib.php');
