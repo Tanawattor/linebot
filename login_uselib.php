@@ -467,25 +467,10 @@ if($LineLogin->verifyToken($accToken)){
 <?php } ?>
 <?php
 if(isset($_POST['register'])){
-    //$LineLogin->authorize(); 
-    # An HTTP POST request example
 
-    # a pass-thru script to call my Play server-side code.
-    # currently needed in my dev environment because Apache and Play run on
-    # different ports. (i need to do something like a reverse-proxy from
-    # Apache to Play.)
-
-    # the POST data we receive from Sencha (which is not JSON)
     $userid = $_POST['userid'];
     $cid = $_POST['cid'];
     $key = "xxx";
-
-    $ch = curl_init();
-
-    //curl_setopt($ch, CURLOPT_URL,"http://203.157.162.18/link_line/register.php");
-    //curl_setopt($ch, CURLOPT_URL,"http://resume-online.mono.co.th/restmonotravel/welcome/test");
-
-
     $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
     $data_string = json_encode($data);
     $registerURL = "http://178.128.111.230/link_line/register.php";
