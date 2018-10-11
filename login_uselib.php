@@ -438,13 +438,13 @@ if($LineLogin->verifyToken($accToken)){
       <br><br>
       <h5><?php echo $lineUserData['name']; ?></h5>
       <br>
-      <form action="#" method="post">
+      <form>
       <div class="form-group">
           <!-- <label for="usr">เลขบัตรประชาชน:</label> -->
           <input type="hidden" name="userid" id="userid"value="<?php echo $lineUserData['sub']; ?>">
           <input type="number" style="text-align:center" class="form-control" id="cid"name="cid" placeholder="เลขบัตรประชาชน (ไม่ต้องมี - )" required>
           <br><br>
-          <button type="submit"
+          <button
            onclick="Login();"
            style="background-color:#00C300;color:#FFFFFF"
            class="btn btn-block"
