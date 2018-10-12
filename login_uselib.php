@@ -514,7 +514,7 @@ if(isset($_POST['register'])){
     $key = "xxx";
     $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
     $data_string = json_encode($data);
-    $registerURL = "http://178.128.111.230/link_line/register.php";
+    $registerURL = "http://178.128.111.230/coddev/welcome/register.php";
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $registerURL);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
