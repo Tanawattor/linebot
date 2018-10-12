@@ -556,7 +556,7 @@ if(isset($_POST['register'])){
     
 
 
-    echo $result;
+    print_r($result);
     exit;   
 }
 if(isset($_POST['lineLogin'])){
