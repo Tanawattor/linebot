@@ -498,7 +498,7 @@ if($LineLogin->verifyToken($accToken)){
             <?php if(isset($_GET['stadd'])){?>
                 <br>
                 <div class="alert alert-danger">
-                เกิดข้อผิดพลาดกรุณาลองใหม่ !
+                เกิดข้อผิดพลาด กรุณาตรวจสอบความถูกต้องของเลขบัตรประชาชน กรุณาลองใหม่ !
                 </div>
             <?php } ?>
 
