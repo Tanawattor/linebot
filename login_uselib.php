@@ -490,8 +490,16 @@ if($LineLogin->verifyToken($accToken)){
            <?php }else{ ?>
                 <div class="alert alert-danger">
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
-            </div>
+                </div>
            <?php } ?>
+            
+            <?php if($_POST['stadd'] == 0){?>
+                <div class="alert alert-danger">
+                เกิดข้อผิดพลาดกรุณาลองใหม่ !
+                </div>
+            <?php } ?>
+
+           
       </div>
       </form>
       
@@ -532,7 +540,12 @@ if(isset($_POST['register'])){
       } else {
         //echo "Success!<br />\n";
         $result = curl_exec($ch);
-        $LineLogin->redirect("login_uselib.php");
+        if($result == 0){
+            $LineLogin->redirect("login_uselib.php?stadd=0");
+        }else{
+            $LineLogin->redirect("login_uselib.php");
+        }
+        
       }
 
       curl_close($ch);
