@@ -307,9 +307,9 @@ class LineLoginLib
 
     public function getRegister($userid)
     {
-        $data = array("userid" => "$userid");
+        $data = array("userid" => "$userid","key" => "broapi");
         $data_string = json_encode($data);
-        $registerURL = "http://178.128.111.230/link_line/chkregister.php";
+        $registerURL = "http://178.128.111.230/coddev/welcome/chk_register";
         $ch = curl_init();
         curl_setopt( $ch, CURLOPT_URL, $registerURL);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
