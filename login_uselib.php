@@ -493,7 +493,7 @@ if($LineLogin->verifyToken($accToken)){
                 </div>
            <?php } ?>
             
-            <?php if($_POST['stadd'] == 0){?>
+            <?php if($_GET['stadd'] == 0){?>
                 <div class="alert alert-danger">
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
                 </div>
