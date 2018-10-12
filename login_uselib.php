@@ -525,7 +525,7 @@ if(isset($_POST['register'])){
     $key = "broapi";
     $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
     $data_string = json_encode($data);
-    $registerURL = "http://178.128.111.230/coddev/welcome/register.php";
+    $registerURL = "http://178.128.111.230/coddev/welcome/register";
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $registerURL);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -544,13 +544,11 @@ if(isset($_POST['register'])){
         //echo "Success!<br />\n";
         $result = curl_exec($ch);
 
-        $LineLogin->redirect("login_uselib.php");
-        
-        // if($result == "0"){
-        //     $LineLogin->redirect("login_uselib.php?stadd=0");
-        // }else{
-        //     $LineLogin->redirect("login_uselib.php");
-        // }
+        if($result == "0"){
+            $LineLogin->redirect("login_uselib.php?stadd=0");
+        }else{
+            $LineLogin->redirect("login_uselib.php");
+        }
         
       }
 
