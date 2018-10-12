@@ -483,17 +483,20 @@ if($LineLogin->verifyToken($accToken)){
            class="btn btn-block"
            name="register">ยืนยัน</button>
            <?php }elseif ($chkRegis == 1) { ?>
+           <br>
             <div class="alert alert-success">
                 คุณได้ลงทะเบียนกับเราแล้ว !!
             </div>
 
            <?php }else{ ?>
+                <br>
                 <div class="alert alert-danger">
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
                 </div>
            <?php } ?>
             
             <?php if(isset($_GET['stadd'])){?>
+                <br>
                 <div class="alert alert-danger">
                 เกิดข้อผิดพลาดกรุณาลองใหม่ !
                 </div>
