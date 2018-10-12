@@ -522,7 +522,7 @@ if(isset($_POST['register'])){
 
     $userid = $_POST['userid'];
     $cid = $_POST['cid'];
-    $key = "xxx";
+    $key = "broapi";
     $data = array("userid" => "$userid", "cid" => "$cid", "key" => "$key");
     $data_string = json_encode($data);
     $registerURL = "http://178.128.111.230/coddev/welcome/register.php";
@@ -543,6 +543,7 @@ if(isset($_POST['register'])){
       } else {
         //echo "Success!<br />\n";
         $result = curl_exec($ch);
+        echo $result; exit;
         if($result == 0){
             $LineLogin->redirect("login_uselib.php?stadd=0");
         }else{
