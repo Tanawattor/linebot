@@ -544,11 +544,11 @@ if(isset($_POST['register'])){
         //echo "Success!<br />\n";
         $result = curl_exec($ch);
 
-        // if($result == 0){
-        //     $LineLogin->redirect("login_uselib.php?stadd=0");
-        // }else{
-        //     $LineLogin->redirect("login_uselib.php");
-        // }
+        if($result == 0){
+            $LineLogin->redirect("login_uselib.php?stadd=0");
+        }else{
+            $LineLogin->redirect("login_uselib.php");
+        }
         
       }
 
@@ -556,8 +556,8 @@ if(isset($_POST['register'])){
     
 
 
-    print_r($result);
-    exit;   
+    // print_r($result);
+    // exit;   
 }
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
