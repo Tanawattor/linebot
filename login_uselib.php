@@ -556,8 +556,8 @@ if(isset($_POST['register'])){
     
 
 
-    // echo $result;
-    // exit;   
+    echo $result;
+    exit;   
 }
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
